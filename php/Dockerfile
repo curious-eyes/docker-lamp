@@ -10,9 +10,9 @@ RUN mv $PHP_INI_DIR/php.ini-development $PHP_INI_DIR/php.ini && \
 RUN ["apt-get", "update"]
 RUN ["apt-get", "install", "-y", "libonig-dev", "libfreetype6-dev", "libjpeg-dev", "libpng-dev", "libcurl4-openssl-dev", "libzip-dev", "libicu-dev", "libldap-dev", "imagemagick", "unzip", "pkg-config", "patch"]
 
-RUN ["docker-php-ext-install", "-j2","curl", "mbstring", "pdo_mysql", "zip", "exif", "intl", "fileinfo", "ldap", "mysqli", "gd"]
-
 RUN ["pecl", "install", "APCu"]
 RUN ["docker-php-ext-enable", "apcu.so"]
+
+RUN ["docker-php-ext-install", "-j2","curl", "mbstring", "pdo_mysql", "zip", "exif", "intl", "fileinfo", "ldap", "mysqli", "gd"]
 
 COPY ./xdebug.ini $PHP_INI_DIR/conf.d/
